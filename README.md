@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Laravel-React-Authentication-I-Breeze-Api-Session-Auth
 
 My project is a web application that provides user authentication features with Laravel Breeze and Session Authentication on the backend, and a React-based front-end user interface that enables users to register, login and reset password and much more!. It also features protected routes that require authentication, preventing unauthorized users from accessing certain parts of the application. The application also uses Tailwind CSS to add styling and animations, making it visually appealing and engaging for users. Overall, your project provides a secure, user-friendly, and well-designed user authentication system.
