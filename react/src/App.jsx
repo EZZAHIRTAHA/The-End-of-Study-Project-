@@ -18,10 +18,10 @@ const App = () => {
                 <Route path='/' element={<Home/>} />
               </Route>
               <Route element={<GuestLayout/>}>
-                <Route path='/login' element={<Login/>} />
-                <Route path='/register' element={<Register/>} />
-                <Route path='/forgot-password' element={<ForgotPassword/>} />
-                <Route path='/password-reset/:token' element={<ResetPassword />} />
+                <Route path='/login' element={!user && <Login/>} />
+                <Route path='/register' element={!user && <Register/>} />
+                <Route path='/forgot-password' element={!user &&<ForgotPassword/>} />
+                <Route path='/password-reset/:token' element={!user && <ResetPassword />} />
               </Route>
             </Routes>
           </CSSTransition>

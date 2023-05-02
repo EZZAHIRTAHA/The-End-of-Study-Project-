@@ -10,7 +10,7 @@ const Register = () => (
       <div className="-mx-4 flex flex-wrap">
         <div className="w-full px-4">
           <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px] shadow-xl">
-            <div className="mb-10 text-center drop-shadow-xl text-xl tracking-wider md:mb-16 text-indigo-500">Ezzahir Taha</div>
+            <div className="mb-10 text-center drop-shadow-xl text-xl tracking-wider md:mb-16 text-red-300 uppercase">Create An Account</div>
             <RegisterForm/>
             <p className="text-base capitalize text-[#adadad]">
               Already Have an account ?

@@ -1,6 +1,7 @@
 import React from 'react'
 import useAuthContext from '../context/AuthContext'
 import axiosClient from '../api/axiosClient'
+import { Link } from 'react-router-dom'
 
 const ForgotPassword = () => {
 
@@ -56,6 +57,9 @@ const ForgotPassword = () => {
         className="w-full px-4 py-3 bg-indigo-500 hover:bg-indigo-700 rounded-md text-white">
         Send
       </button>
+      <Link className=' capitalize flex justify-end mt-5 text-red-400 pl-2 hover:underline' to='/login'>
+        Back To login page
+      </Link>
     </div>
   </form>
   </div>

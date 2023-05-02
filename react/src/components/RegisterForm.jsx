@@ -20,6 +20,7 @@ const RegisterForm = () => {
       setFormData(formData => ({...formData, [name]: value}))
     }
     
+    console.log(errors);
 
     const handleSubmit = async (event) => {
       event.preventDefault()
