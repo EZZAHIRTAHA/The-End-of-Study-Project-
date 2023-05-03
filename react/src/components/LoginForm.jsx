@@ -47,7 +47,7 @@ const LoginForm = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />}
-                        {password && <div className="absolute top-1/4 right-2 transform -translate-y-1/2">
+                        {password && <div className="absolute top-1/2 right-2 transform -translate-y-1/2">
                             {show ? <BiShowAlt onClick={showPassword} className='cursor-pointer mx-2 text-[25px] text-indigo-400' />: <BiHide onClick={showPassword} className='cursor-pointer mx-2 text-[25px] text-indigo-400' />}
                         </div>}
                         <div className="flex">

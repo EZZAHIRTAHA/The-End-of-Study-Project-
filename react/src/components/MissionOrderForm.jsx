@@ -21,11 +21,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+const imageSrc ='./ofppt.jpg'
 
-const MyDocument = ({ name, matricule, accompagnement, destination, mission, departureDate, departureTime, returnDate, returnTime, transportation, vehicleType, vehicleBrand, vehiclePower, vehiclePlateNumber }) => (
+const MyDocument = ({ name, matricule, accompagnement, destination, mission, departureDate, departureTime, returnDate, returnTime, transportation, vehicleType, vehicleBrand, vehiclePower, vehiclePlateNumber,  }) => (
   <Document>
     <Page size="A4" style={styles.page}>
-    <img src="./ofppt.jpg" alt="" style={{ marginBottom: "20px" }} />
+      <img src={imageSrc} alt="" style={{ marginBottom: "20px" }} />
       <Text style={styles.heading}>ORDRE DE MISSION</Text>
 
       <View>
