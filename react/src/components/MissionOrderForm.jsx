@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer';
+import {BsDownload} from 'react-icons/bs'
+
 
 const styles = StyleSheet.create({
   page: {
@@ -7,9 +9,11 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   heading: {
-    fontSize: 24,
+    fontSize: 27,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 40,
+    textAlign: 'center',
+    textDecoration: 'underline'
   },
   label: {
     fontSize: 16,
@@ -20,17 +24,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
   },
+  table: {
+    border: 1
+  }
 });
 const imageSrc ='./ofppt.jpg'
 
 const MyDocument = ({ name, matricule, accompagnement, destination, mission, departureDate, departureTime, returnDate, returnTime, transportation, vehicleType, vehicleBrand, vehiclePower, vehiclePlateNumber,  }) => (
-  <Document>
+  <Document style={styles.table}>
     <Page size="A4" style={styles.page}>
-      <img src={imageSrc} alt="" style={{ marginBottom: "20px" }} />
+      <Image src={imageSrc} alt="" style={{ marginBottom: "20px" }} cache={false} />
       <Text style={styles.heading}>ORDRE DE MISSION</Text>
 
       <View>
-        <Text style={styles.label}>Name:</Text>
+        <Text style={styles.label}>Monsieur:</Text>
         <Text style={styles.value}>{name}</Text>
       </View>
 
@@ -40,58 +47,164 @@ const MyDocument = ({ name, matricule, accompagnement, destination, mission, dep
       </View>
 
       <View>
-        <Text style={styles.label}>Accompagnement:</Text>
+        <Text style={styles.label}>Accompagné par:</Text>
         <Text style={styles.value}>{accompagnement}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Destination:</Text>
+        <Text style={styles.label}>De se rendre à:</Text>
         <Text style={styles.value}>{destination}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Mission:</Text>
+        <Text style={styles.label}>Pour accomplir la mission suivante:</Text>
         <Text style={styles.value}>{mission}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Departure:</Text>
-        <Text style={styles.value}>{departureDate} at {departureTime}</Text>
+        <Text style={styles.label}>Date de départ:</Text>
+        <Text style={styles.value}>{departureDate} Heure: {departureTime}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Return:</Text>
-        <Text style={styles.value}>{returnDate} at {returnTime}</Text>
+        <Text style={styles.label}>Date de retour:</Text>
+        <Text style={styles.value}>{returnDate} Heure: {returnTime}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Transportation:</Text>
+        <Text style={styles.label}>L’intéressé(e) utilisera:</Text>
         <Text style={styles.value}>{transportation}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Vehicle Type:</Text>
+        {/* <Text style={styles.label}>Vehicle Type:</Text> */}
         <Text style={styles.value}>{vehicleType}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Vehicle Brand:</Text>
+        <Text style={styles.label}>Marque:</Text>
         <Text style={styles.value}>{vehicleBrand}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Vehicle Power:</Text>
+        {/* <Text style={styles.label}>Vehicle Power:</Text> */}
         <Text style={styles.value}>{vehiclePower}</Text>
       </View>
 
       <View>
-        <Text style={styles.label}>Vehicle Plate Number:</Text>
+        <Text style={styles.label}>N° de Plaque:</Text>
         <Text style={styles.value}>{vehiclePlateNumber}</Text>
       </View>
     </Page>
   </Document>
 );
 
+
+// const styles = StyleSheet.create({
+//   body: {
+//     paddingTop: 35,
+//     paddingBottom: 65,
+//     paddingHorizontal: 35,
+//   },
+//   heading: {
+//     fontSize: 27,
+//     fontWeight: 'bold',
+//     marginBottom: 20,
+//     textAlign: 'center',
+//     textDecoration: 'underline'
+//   },
+//   label: {
+//     fontSize: 16,
+//     fontWeight: 'bold',
+//     marginBottom: 5,
+//   },
+//   value: {
+//     fontSize: 16,
+//     marginBottom: 20,
+//   },
+//   table: {
+//     display: "table",
+//     width: "auto",
+//     borderStyle: "solid",
+//     borderWidth: 1,
+//     borderRightWidth: 0,
+//     borderBottomWidth: 0 
+//   },
+//   tableRow: {
+//     margin: "auto",
+//     flexDirection: "row"
+//   },
+//   tableCol: {
+//     width: "25%",
+//     borderStyle: "solid",
+//     borderWidth: 1,
+//     borderLeftWidth: 0,
+//     borderTopWidth: 0
+//   },
+//   tableCell: {
+//     margin: "auto",
+//     marginTop: 5,
+//     fontSize: 10
+//   }
+// });
+
+// const imageSrc ='./ofppt.jpg'
+
+// const MyDocument = ({ name, matricule, accompagnement, destination, mission, departureDate, departureTime, returnDate, returnTime, transportation, vehicleType, vehicleBrand, vehiclePower, vehiclePlateNumber,  }) => (
+//   <Document>
+//     <Page style={styles.body}>
+//       <img src={imageSrc} alt="" style={{ marginBottom: "20px" }} />
+//       <Text style={styles.heading}>ORDRE DE MISSION</Text>
+
+//       <View style={styles.table}>
+//         <View style={styles.tableRow}>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>Monsieur:</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>{name}</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>Matricule:</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>{matricule}</Text>
+//           </View>
+//         </View>
+
+//         <View style={styles.tableRow}>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>Accompagné par:</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>{accompagnement}</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>De se rendre à:</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>{destination}</Text>
+//           </View>
+//         </View>
+
+//         <View style={styles.tableRow}>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>Pour accomplir la mission suivante:</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>{mission}</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>Date de départ:</Text>
+//           </View>
+//           <View style={styles.tableCol}>
+//             <Text style={styles.tableCell}>{departureDate} Heure: {departureTime}</Text>
+//           </View>
+//         </View>
+// </View>
+// </Page>
+// </Document>
+// )
 
 function MissionOrderForm() {
   const [name, setName] = useState("");
@@ -126,7 +239,7 @@ function MissionOrderForm() {
       returnDate={returnDate}
       returnTime={returnTime}
       transportation={transportation}
-      vehicleType={vehicleType}
+      // vehicleType={vehicleType}
       vehicleBrand={vehicleBrand}
       vehiclePower={vehiclePower}
       vehiclePlateNumber={vehiclePlateNumber}
@@ -219,13 +332,13 @@ function MissionOrderForm() {
       returnDate={returnDate}
       returnTime={returnTime}
       transportation={transportation}
-      vehicleType={vehicleType}
+      // vehicleType={vehicleType}
       vehicleBrand={vehicleBrand}
       vehiclePower={vehiclePower}
       vehiclePlateNumber={vehiclePlateNumber} />} fileName="mission-order.pdf">
         {({ blob, url, loading, error }) => (
           <div className="flex justify-center items-center px-3 py-3 rounded-md my-5 text-white bg-slate-800">
-           { loading ? 'Loading document...' : 'Download PDF'}
+           <BsDownload className="mr-3 text-xl"/>{ loading ? 'Loading document...' :  'Télécharger'}
           </div>
             
         )
