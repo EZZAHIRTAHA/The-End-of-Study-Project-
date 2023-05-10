@@ -55,9 +55,9 @@ const Navbar = () => {
             {toggle ? <GrClose className='text-[2rem] scale-up-center font-bold' /> : <AiOutlineMenu className='text-[2rem] scale-up-center font-bold' />}
           </div>
           
-          {/* <div className=" flex-wrap justify-center items-center hidden md:block ">
+          <div className=" flex-wrap justify-center items-center hidden md:block ">
             <MySocial/>
-          </div> */}
+          </div>
           <div className="hidden w-full md:block md:w-auto">
             <ul className="mt-4 text-red-500 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
            
