@@ -5,18 +5,24 @@ import  {AiOutlineMenu} from 'react-icons/ai'
 import useAuthContext from '../context/AuthContext'
 import Logout from './Logout'
 import MySocial from './MySocial'
+import { FaUserAlt } from 'react-icons/fa'
 
 
 const PhoneNav = ({toggle}) => {
+  
+
   return(
     <>
     {toggle && <div className="block w-full md:hidden md:w-auto scale-up-center">
     <ul className="mt-4 text-red-500 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
-      <li>
+      {/* <li>
         <NavLink exact="true" to="/" activeclassname='active' className="block rounded py-2 pr-4 pl-3  hover:bg-red-500 transition duration-300  hover:text-white"  aria-current="page">
           Home
         </NavLink>
-      </li>
+      </li> */}
+         <li>
+          {user&&<h1 className='text-black flex gap-4 mt-10 text-4xl'><FaUserAlt      className='text-4xl'/>Welcome {user&&user?.name}</h1>}
+         </li>
       <li>
         <NavLink exact="true" to="/login" activeclassname='active' className="block rounded py-2 pr-4 pl-3 hover:bg-red-500 transition duration-300 hover:text-white">
           Login
@@ -56,17 +62,18 @@ const Navbar = () => {
           </div>
           
           <div className=" flex-wrap justify-center items-center hidden md:block ">
-            <MySocial/>
+            {/* <MySocial/> */}
+          {user&&<h1 className='text-black flex gap-4 mt-10 text-xl mb-5'><FaUserAlt      className='text-2xl'/>Welcome {user&&user?.name}</h1>}
           </div>
-          <div className="hidden w-full md:block md:w-auto">
+          <div className="hidden  w-full md:block md:w-auto">
             <ul className="mt-4 text-red-500 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
-           
-              <li>
-                <NavLink exact="true" to="/" activeclassname='active' className="block rounded py-2 pr-4 pl-3  hover:bg-red-500 transition duration-300  hover:text-white"  aria-current="page">
-                  Home
-                </NavLink>
-              </li>
-                {user ? <><Logout/></> : <>
+             
+              {user ? <>
+              
+              <Logout/>
+              </> : <>
+
+         
                 <li>
                 <NavLink exact="true" to="/login" activeclassname='active' className="block rounded py-2 pr-4 pl-3 hover:bg-red-500 transition duration-300 hover:text-white">
                   Login
