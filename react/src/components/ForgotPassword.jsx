@@ -2,6 +2,7 @@ import React from 'react'
 import useAuthContext from '../context/AuthContext'
 import axiosClient from '../api/axiosClient'
 import { Link } from 'react-router-dom'
+import { BiArrowBack } from 'react-icons/bi'
 
 const ForgotPassword = () => {
 
@@ -30,7 +31,10 @@ const ForgotPassword = () => {
 
   return (
     <div className='h-screen flex justify-center items-center  scale-up-center'>
-    <div className="container flex justify-center items-center flex-col text-center  p-5 rounded-[10px] mx-auto bg-white max-w-[50%] ">
+    <div className="container flex justify-center items-center flex-col text-center  p-5 rounded-[10px] mx-auto bg-white shadow-xl max-w-[50%] ">
+    <div className=" flex justify-center align-center mb-5">
+                <img src="./ofppt-logo.png" className='w-[100px]' alt="ofppt-logo" />
+              </div>
     <h1 className='text-indigo-500 py-5 text-xl capitalize'> Forgot Your Password ? we got you !</h1>
     <form className=' w-[80%]' onSubmit={handleSubmit}>
     
@@ -57,8 +61,8 @@ const ForgotPassword = () => {
         className="w-full px-4 py-3 bg-indigo-500 hover:bg-indigo-700 rounded-md text-white">
         Send
       </button>
-      <Link className=' capitalize flex justify-end mt-5 text-red-400 pl-2 hover:underline' to='/login'>
-        Back To login page
+      <Link className=' capitalize flex justify-end mt-5 text-red-400 pl-2 hover:underline  items-center' to='/login'>
+        <BiArrowBack className='mr-4  text-xl'/> Back To login page
       </Link>
     </div>
   </form>

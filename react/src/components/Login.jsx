@@ -14,17 +14,17 @@ const Login = () => {
       <div className="container p-5 mx-auto ">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div className="relative bg-gray-100 mx-auto max-w-[525px] overflow-hidden rounded-lg py-16 px-10 text-center sm:px-12 md:px-[60px]">
+            <div className="relative shadow-2xl mx-auto max-w-[525px] overflow-hidden rounded-lg py-16 px-10 text-center sm:px-12 md:px-[60px]">
               <div className=" flex justify-center align-center mb-5">
                 <img src="./ofppt-logo.png" className='w-[100px]' alt="ofppt-logo" />
               </div>
-              <div className="mb-10  text-center drop-shadow-xl text-xl tracking-wider md:mb-16 text-gray-300">LOG INTO YOUR ACCOUNT</div>
+              <div className="mb-10  text-center font-semibold text-xl tracking-wider md:mb-16 text-gray-400">LOG INTO YOUR ACCOUNT</div>
               <LoginForm/>
               <Link to="/forgot-password" className=" mb-2 inline-block text-base text-red-400  hover:underline">
                 Forgot Password?
               </Link>
               <p className="text-base text-[#adadad]">
-                Not a member yet?
+                You don't have an account?
                 <Link to="/register" className="text-red-400 pl-2 hover:underline">
                   Sign Up!
                 </Link>
