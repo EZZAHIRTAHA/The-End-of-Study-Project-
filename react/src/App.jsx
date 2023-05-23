@@ -8,7 +8,7 @@ import useAuthContext from './context/AuthContext';
 const App = () => {
   const {user} = useAuthContext()
   return (
-    <div className="bg-red-300 p-3 min-h-screen transition-all duration-500 scroll-smooth">
+    <div className="bg-white p-3 min-h-screen transition-all duration-500 scroll-smooth">
       {user && <Navbar/>}
       <div className="max-w-7xl mx-auto mt-6">
         <TransitionGroup>
