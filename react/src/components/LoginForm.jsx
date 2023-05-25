@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BiHide, BiShowAlt } from 'react-icons/bi'
 import useAuthContext from '../context/AuthContext'
+import {FiLogIn} from 'react-icons/fi'
 const LoginForm = () => {
     const [show, setShow] = useState(true)
     const [email, setEmail] = useState('')
@@ -58,8 +59,8 @@ const LoginForm = () => {
                 <div className="mb-10">
                   <button
                     type="submit"
-                    className="w-full px-4 py-3 bg-indigo-500 hover:bg-indigo-700 rounded-md text-white">
-                    Login
+                    className="flex justify-center items-center w-full px-4 py-3 bg-indigo-500 hover:bg-indigo-700 rounded-md text-white">
+                    <FiLogIn className='mr-3 text-xl'/>Login
                   </button>
                 </div>
               </form>

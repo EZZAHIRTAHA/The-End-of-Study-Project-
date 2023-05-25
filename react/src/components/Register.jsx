@@ -5,11 +5,11 @@ import RegisterForm from './RegisterForm'
 
 
 const Register = () => (
-    <section  className="scale-up-center">
-    <div className="container p-5 mx-auto">
+    <section  className="scale-up-center sha">
+    <div className="container p-5 mx-auto ">
       <div className="-mx-4 flex flex-wrap">
         <div className="w-full px-4">
-          <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px] shadow-xl">
+          <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px] shadow-2xl">
           <div className=" flex justify-center align-center mb-5">
                 <img src="./ofppt-logo.png" className='w-[100px]' alt="ofppt-logo" />
               </div>
