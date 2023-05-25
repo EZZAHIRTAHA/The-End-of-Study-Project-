@@ -9,14 +9,14 @@ MissionXpress is a web application developed as a part of my PFE (Projet de Fin 
 Technologie
 
 ## Getting Started
-<p style="font-weight:bold;">
-Clone the repository: git clone https://github.com/EZZAHIRTAHA/The-End-of-Study-Project-.git
-Install dependencies for the React front-end: cd client && npm install
-Install dependencies for the Laravel back-end: cd server && composer install
-Configure the database connection in the .env file.
-Run migrations and seed the database: php artisan migrate --seed
-Start the development server: cd client && npm start and cd server && php artisan serve
-</p>
+
+- Clone the repository: git clone https://github.com/EZZAHIRTAHA/The-End-of-Study-Project-.git
+- Install dependencies for the React front-end: cd client && npm install
+- Install dependencies for the Laravel back-end: cd server && composer install
+- Configure the database connection in the .env file.
+- Run migrations and seed the database: php artisan migrate --seed
+- Start the development server: cd client && npm start and cd server && php artisan serve
+
 
 
 =======
