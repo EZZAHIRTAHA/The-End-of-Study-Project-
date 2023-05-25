@@ -18,7 +18,7 @@ const Login = () => {
               <div className=" flex justify-center align-center mb-5">
                 <img src="./ofppt-logo.png" className='w-[100px]' alt="ofppt-logo" />
               </div>
-              <div className="mb-10  text-center font-semibold text-xl tracking-wider md:mb-16 text-gray-400">LOG INTO YOUR ACCOUNT</div>
+              <div className="mb-10  text-center font-medium text-xl tracking-wider md:mb-16 text-red-400">LOG INTO YOUR ACCOUNT</div>
               <LoginForm/>
               <Link to="/forgot-password" className=" mb-2 inline-block text-base text-red-400  hover:underline">
                 Forgot Password?
