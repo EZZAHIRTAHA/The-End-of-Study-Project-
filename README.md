@@ -1,6 +1,23 @@
-# Laravel-React-Authentication-I-Breeze-Api-Session-Auth
+# MissionXpress: Authentication and Mission Order Creation Web Application
 
-My project is a web application that provides user authentication features with Laravel Breeze and Session Authentication on the backend, and a React-based front-end user interface that enables users to register, login and reset password and much more!. It also features protected routes that require authentication, preventing unauthorized users from accessing certain parts of the application. The application also uses Tailwind CSS to add styling and animations, making it visually appealing and engaging for users. Overall, your project provides a secure, user-friendly, and well-designed user authentication system.
+MissionXpress is a web application developed as a part of my PFE (Projet de Fin d'Études). It provides a user-friendly interface for authentication and enables users to create mission orders efficiently. The application is built using React and Laravel frameworks, leveraging their powerful features and seamless integration.
+
+## Key Features
+- Authentication: Users can securely register, log in, and manage their accounts to access the application.
+- Mission Order Creation: Once authenticated, users can easily fill out a form with mission information, including relevant details and requirements.
+- PDF Generation: Upon submitting the form, the data entered by the user is automatically processed, and a downloadable PDF version of the mission order is generated.
+Technologie
+
+## Getting Started
+<p style="font-weight:bold;">
+Clone the repository: git clone https://github.com/EZZAHIRTAHA/The-End-of-Study-Project-.git
+Install dependencies for the React front-end: cd client && npm install
+Install dependencies for the Laravel back-end: cd server && composer install
+Configure the database connection in the .env file.
+Run migrations and seed the database: php artisan migrate --seed
+Start the development server: cd client && npm start and cd server && php artisan serve
+</p>
+
 
 =======
 <<<<<<< HEAD
