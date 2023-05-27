@@ -10,12 +10,12 @@ Technologie
 
 ## Getting Started
 
-- Clone the repository: git clone https://github.com/EZZAHIRTAHA/The-End-of-Study-Project-.git
-- Install dependencies for the React front-end: cd client && npm install
-- Install dependencies for the Laravel back-end: cd server && composer install
+- Clone the repository: git clone https://github.com/EZZAHIRTAHA/The-End-of-Study-Project-.git.
+- Install dependencies for the Laravel back-end:composer install or update.
+- Install dependencies for the React front-end: cd react && npm install.
 - Configure the database connection in the .env file.
-- Run migrations and seed the database: php artisan migrate --seed
-- Start the development server: cd client && npm start and cd server && php artisan serve
+- Run migrations and seed the database: php artisan migrate --seed.
+- Start the development server: cd react && npm run dve and && php artisan serve in the root dir.
 
 
 
