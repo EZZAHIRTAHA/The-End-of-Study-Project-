@@ -41,6 +41,8 @@ const ForgotPassword = () => {
     <div className="mb-4">
      {status && <div className="text-green-500 font-bold">
       {status}
+      <br />
+      {status && <a href='https://mailtrap.io/' target='_blank' className='text-gray-400 font-light hover:underline text-sm m-2 '>Click here to reset your password</a>}
       </div>}
       <input
         type="email"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, Login, Navbar, Register, ForgotPassword, ResetPassword } from './components';
+import { Home, Login, Navbar, Register, ForgotPassword, ResetPassword, Users } from './components';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import AuthLayout from './layouts/AuthLayout';
 import GuestLayout from './layouts/GuestLayout';
@@ -16,6 +16,7 @@ const App = () => {
             <Routes>
               <Route element={ <AuthLayout/> }>
                 <Route path='/' element={<Home/>} />
+                <Route path='/users' element={<Users/>} />
               </Route>
               <Route element={<GuestLayout/>}>
                 <Route path='/login' element={!user && <Login/>} />

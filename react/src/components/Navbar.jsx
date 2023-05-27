@@ -8,30 +8,29 @@ import MySocial from './MySocial'
 import { FaUserAlt } from 'react-icons/fa'
 
 
-const PhoneNav = ({toggle}) => {
+const PhoneNav = ({toggle, user}) => {
   
 
   return(
     <>
     {toggle && <div className="block w-full md:hidden md:w-auto scale-up-center">
-    <ul className="mt-4 text-red-500 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
-      {/* <li>
-        <NavLink exact="true" to="/" activeclassname='active' className="block rounded py-2 pr-4 pl-3  hover:bg-red-500 transition duration-300  hover:text-white"  aria-current="page">
-          Home
-        </NavLink>
-      </li> */}
+    <ul className="mt-4 text-red-500 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium justify-center items-center">
+      
          <li>
-          {user&&<h1 className='text-black flex gap-4 mt-10 text-4xl'><FaUserAlt      className='text-4xl'/>Welcome {user&&user?.name}</h1>}
+          {user&&<h1 className='text-black flex gap-4 mt-10 text-xl mb-5'><FaUserAlt      className='text-xl'/>Welcome {user&&user?.name}</h1>}
          </li>
       <li>
-        <NavLink exact="true" to="/login" activeclassname='active' className="block rounded py-2 pr-4 pl-3 hover:bg-red-500 transition duration-300 hover:text-white">
+        {!user ?<NavLink exact="true" to="/login" activeclassname='active' className="block rounded py-2 pr-4 pl-3 hover:bg-red-500 transition duration-300 hover:text-white">
           Login
-        </NavLink>
+        </NavLink> : ""}
       </li>
       <li>
-        <NavLink exact="true" to="/register" activeclassname='active' className="block rounded py-2 pr-4 pl-3 hover:bg-red-500 transition duration-300 hover:text-white md:border-0">
+        {!user ?<NavLink exact="true" to="/register" activeclassname='active' className="block rounded py-2 pr-4 pl-3 hover:bg-red-500 transition duration-300 hover:text-white md:border-0">
           Register
-        </NavLink>
+        </NavLink> : ""}
+      </li>
+      <li>
+        {user && <Logout/>}
       </li>
     </ul>
   </div>}
@@ -68,10 +67,11 @@ const Navbar = () => {
           <div className="hidden  w-full md:block md:w-auto">
             <ul className="mt-4 text-red-500 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
              
-              {user ? <>
+              {user ? <div className='flex justify-center items-center gap-5'>
               
               <Logout/>
-              </> : <>
+                <NavLink className="block rounded py-2 pr-4 pl-3 bg-indigo-900 transition duration-300 text-white hover:bg-indigo-800" to='/users'> Users</NavLink>
+              </div> : <>
 
          
                 <li>
@@ -84,10 +84,12 @@ const Navbar = () => {
                   Register
                 </NavLink>
               </li>
+              <li>
+              </li>
                 </>}
             </ul>
           </div>
-          <PhoneNav toggle={toggle}/>
+          <PhoneNav user={user} toggle={toggle}/>
         </div>
       </nav>
   )
