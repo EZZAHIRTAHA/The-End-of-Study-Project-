@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const AddUser = () => {
   return (
     <>
-          <form className='flex justify-center items-center flex-col mt-20 w-full '>
+          <form className='scale-up-center flex justify-center items-center flex-col mt-20 w-full '>
             <div class="mb-6 ">
               <label htmlFor="name" class="block mb-2 text-md  text-gray-900 font-semibold">Your Name</label>
               <input type="name" id="name" class="text-sm rounded-lg outline-none w-[300px]  block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="name@flowbite.com" />

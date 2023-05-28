@@ -53,13 +53,24 @@ export const AuthProvider = ({children}) => {
         setUser(null)
       })
     }
+
+    const deleteUser = (id) => {
+      axiosClient.delete(`/users/${id}`)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+
     React.useEffect(() => {
       if(!user){
         getUser()
       }
     }, [])
 
-    return <AuthContext.Provider value={{user, setUser, errors, setErrors, getUser, login, register, logout, csrf}}>
+    return <AuthContext.Provider value={{user, setUser, errors, setErrors, getUser, login, register, logout, csrf, deleteUser}}>
         {children}
     </AuthContext.Provider>
 } 

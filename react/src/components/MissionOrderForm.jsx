@@ -249,7 +249,8 @@ function MissionOrderForm() {
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="text-black w-full shadow-2xl bg-white p-8 rounded-lg">
+    <form onSubmit={handleSubmit} className="scale-up-center
+scale-up-center text-black w-full shadow-2xl bg-white p-8 rounded-lg">
       <div className="flex justify-center w-full items-center "><img src="https://sites.google.com/site/modulesofppt01/_/rsrc/1348589459140/home/424878_10150562991771050_2120156378_n.jpg" alt="" /></div>
       <h1 className="text-center font-semibold text-4xl mb-10">ORDRE DE MISSION </h1>
       

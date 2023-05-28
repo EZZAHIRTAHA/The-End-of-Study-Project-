@@ -5,22 +5,45 @@ import { FaSpinner } from 'react-icons/fa';
 const myUrl = "http://localhost:8000/api/users";
 import {Link} from 'react-router-dom'
 import axiosClient from '../api/axiosClient';
+import useAuthContext from '../context/AuthContext';
+
+
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [totalItemsCount, setTotalItemsCount] = useState(0);
-
+  const {deleteUser} = useAuthContext()
+  const [message, setMessage] = useState(false)
   const getUsers = async (pageNumber = 1) => {
     try {
       const response = await axiosClient.get(`api/users?page=${pageNumber}`);
       setUsers(response.data.data);
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setTotalItemsCount(response.data.meta.total);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleDelete = (user) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) {
+      return;
+    }
+    axiosClient.delete(`/api/users/${user.id}`)
+      .then(response => {
+        console.log(response);
+        setMessage(true);
+        setTimeout(() => {
+          setMessage(false);
+        }, 5000); // 5 seconds
+        getUsers()
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  
 
   useEffect(() => {
     getUsers();
@@ -32,7 +55,11 @@ const Users = () => {
   };
 
   return (
-    <div className="relative overflow-x-auto rounded-md">
+    <div className="relative overflow-x-auto rounded-md scale-up-center
+    scale-up-center">
+      {message&&<div class="scale-up-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-green-800 dark:text-white text-center" role="alert">
+      User Deleted Successfully !
+    </div>}
       <div className="flex justify-end items-center"> 
         <Link to='/users/addUser' className='cursor-pointer bg-slate-500 my-5 p-3 rounded-md text-white hover:bg-gray-700  '>
           Add new user
@@ -75,7 +102,7 @@ const Users = () => {
               </td>
               <td className="px-6 py-4">
                 <Link to={`/users/${u.id}`} className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Edit</Link>
-                <Link className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Delete</Link>
+                <Link onClick={() => handleDelete(u)} className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Delete</Link>
               </td>
             </tr>
           ))}
