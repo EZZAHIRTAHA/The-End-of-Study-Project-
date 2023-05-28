@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, Login, Navbar, Register, ForgotPassword, ResetPassword, Users } from './components';
+import { Home, Login, Navbar, Register, ForgotPassword, ResetPassword, Users, AddUser, NotFound } from './components';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import AuthLayout from './layouts/AuthLayout';
 import GuestLayout from './layouts/GuestLayout';
@@ -17,6 +17,8 @@ const App = () => {
               <Route element={ <AuthLayout/> }>
                 <Route path='/' element={<Home/>} />
                 <Route path='/users' element={<Users/>} />
+                <Route path='/users/addUser' element={<AddUser/>} key="userCreate" />
+                <Route path='/users/:id' element={<AddUser/>} key="userUpdate" />
               </Route>
               <Route element={<GuestLayout/>}>
                 <Route path='/login' element={!user && <Login/>} />
@@ -24,6 +26,7 @@ const App = () => {
                 <Route path='/forgot-password' element={!user &&<ForgotPassword/>} />
                 <Route path='/password-reset/:token' element={!user && <ResetPassword />} />
               </Route>
+              <Route path='*' element={<NotFound/>}/>
             </Routes>
           </CSSTransition>
         </TransitionGroup>

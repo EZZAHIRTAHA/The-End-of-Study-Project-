@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
-
+import { FaSpinner } from 'react-icons/fa';
 const myUrl = "http://localhost:8000/api/users";
+import {Link} from 'react-router-dom'
+import axiosClient from '../api/axiosClient';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -11,8 +13,9 @@ const Users = () => {
 
   const getUsers = async (pageNumber = 1) => {
     try {
-      const response = await axios.get(`${myUrl}?page=${pageNumber}`);
+      const response = await axiosClient.get(`api/users?page=${pageNumber}`);
       setUsers(response.data.data);
+      console.log(response.data.data);
       setTotalItemsCount(response.data.meta.total);
     } catch (error) {
       console.log(error);
@@ -30,6 +33,11 @@ const Users = () => {
 
   return (
     <div className="relative overflow-x-auto rounded-md">
+      <div className="flex justify-end items-center"> 
+        <Link to='/users/addUser' className='cursor-pointer bg-slate-500 my-5 p-3 rounded-md text-white hover:bg-gray-700  '>
+          Add new user
+        </Link>
+      </div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -42,12 +50,15 @@ const Users = () => {
             <th scope="col" className="px-6 py-3">
               Email
             </th>
+            <th>
+            Created at
+            </th>
             <th scope="col" className="px-6 py-3">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody>
+       {users ? <tbody>
           {users.map((u) => (
             <tr key={u.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -60,12 +71,15 @@ const Users = () => {
                 {u.email}
               </td>
               <td className="px-6 py-4">
-                <button className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Edit</button>
-                <button className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Delete</button>
+                {u.created_at}
+              </td>
+              <td className="px-6 py-4">
+                <Link to={`/users/${u.id}`} className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Edit</Link>
+                <Link className='bg-slate-800 border-[1px] hover:bg-slate-700 mx-3 text-white p-3 rounded'>Delete</Link>
               </td>
             </tr>
           ))}
-        </tbody>
+        </tbody> : <div className='h-screen justify-center flex items-center'><FaSpinner className='text-2xl animate-spin'/></div>}
       </table>
 
       <div className="flex justify-center mt-4 flex-row">
