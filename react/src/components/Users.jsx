@@ -13,7 +13,6 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [totalItemsCount, setTotalItemsCount] = useState(0);
-  const {deleteUser} = useAuthContext()
   const [message, setMessage] = useState(false)
   const getUsers = async (pageNumber = 1) => {
     try {
@@ -57,7 +56,7 @@ const Users = () => {
   return (
     <div className="relative overflow-x-auto rounded-md scale-up-center
     scale-up-center">
-      {message&&<div class="scale-up-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-green-800 dark:text-white text-center" role="alert">
+      {message&&<div className="scale-up-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-green-800 dark:text-white text-center" role="alert">
       User Deleted Successfully !
     </div>}
       <div className="flex justify-end items-center"> 

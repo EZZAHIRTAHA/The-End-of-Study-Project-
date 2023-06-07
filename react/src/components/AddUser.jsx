@@ -1,66 +1,90 @@
-import {useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
-import axiosClient from '../api/axiosClient'
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axiosClient from "../api/axiosClient";
+// import {useStateContext} from "../context/ContextProvider.jsx";
 
+export default function UserForm() {
+  const navigate = useNavigate();
+  let {id} = useParams();
+  const [user, setUser] = useState({
+    id: null,
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
+  })
+  const [errors, setErrors] = useState(null)
+  const [loading, setLoading] = useState(false)
+  // const {setNotification} = useStateContext()
 
+  if (id) {
+    useEffect(() => {
+      setLoading(true)
+      axiosClient.get(`/api/users/${id}`)
+        .then(({data}) => {
+          setLoading(false)
+          setUser(data)
+        })
+        .catch(() => {
+          setLoading(false)
+        })
+    }, [])
+  }
 
-
-const AddUser = () => {
-
-  
-  
-  const {id} = useParams()
-
-    const [user, setUser] = useState({
-      id: null,
-      name: "",
-      email: "",
-      password: "",
-      // password_confirmation
-    })
-    if(id) {
-      useEffect(() => {
-        axiosClient.get(`/users/${id}`)
-          .then(({data}) => {
-            setUser(data)
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-      }, [])
+  const onSubmit = ev => {
+    ev.preventDefault()
+    if (user.id) {
+      axiosClient.put(`/api/users/${user.id}`, user)
+        .then(() => {
+          navigate('/api/users')
+        })
+        .catch(err => {
+          const response = err.response;
+          if (response && response.status === 422) {
+            setErrors(response.data.errors)
+          }
+        })
+    } else {
+      axiosClient.post('/api/users', user)
+        .then(() => {
+          navigate('/api/users')
+        })
+        .catch(err => {
+          const response = err.response;
+          if (response && response.status === 422) {
+            setErrors(response.data.errors)
+          }
+        })
     }
+  }
 
   return (
     <>
-          {/* <form className='scale-up-center flex justify-center items-center flex-col mt-20 w-full '>
-            <div class="mb-6 ">
-              <label htmlFor="name" class="block mb-2 text-md  text-gray-900 font-semibold">Your Name</label>
-              <input 
-                type="name" 
-                id="name" 
-                class="text-sm rounded-lg outline-none w-[300px]  block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " 
-                placeholder="name@flowbite.com"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div class="mb-6">
-              <label htmlFor="Email" class="block mb-2 text-md font-semibold  text-gray-900 ">Your Email</label>
-              <input 
-                type="Email" 
-                id="Email" 
-                class="text-sm rounded-lg outline-none w-[300px]  block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className=" flex justify-center items-center gap-5">
-              <button type="submit" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 tracking-wider dark:focus:ring-blue-800">Add User</button>
-              <Link to="/users" type="submit" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 tracking-wider dark:focus:ring-red-800">Back</Link >
-            </div>
-          </form> */}
+      {user.id && <h1>Update User: {user.name}</h1>}
+      {!user.id && <h1>New User</h1>}
+      <div className="card animated fadeInDown">
+        {loading && (
+          <div className="text-center">
+            Loading...
+          </div>
+        )}
+        {errors &&
+          <div className="alert">
+            {Object.keys(errors).map(key => (
+              <p key={key}>{errors[key][0]}</p>
+            ))}
+          </div>
+        }
+        {!loading && (
+          <form onSubmit={onSubmit}>
+            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="Name"/>
+            <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
+            <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
+            <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/>
+            <button className="btn">Save</button>
+          </form>
+        )}
+      </div>
     </>
   )
 }
-
-export default AddUser
