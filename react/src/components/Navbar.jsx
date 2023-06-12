@@ -61,7 +61,7 @@ const Navbar = () => {
           </div>
           
           <div className=" flex-wrap justify-center items-center hidden md:block ">
-            {/* <MySocial/> */}
+            <MySocial/>
           {user&&<h1 className='text-black flex gap-4 mt-10 text-xl mb-5'><FaUserAlt      className='text-2xl'/>Welcome {user&&user?.name}</h1>}
           </div>
           <div className="hidden  w-full md:block md:w-auto">
